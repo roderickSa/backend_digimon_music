@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/digimons', function() {
+Route::post('/digimons', function() {
     return Digimon::where('music', '!=', '')->get();
 });
 
