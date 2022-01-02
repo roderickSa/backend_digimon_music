@@ -19,7 +19,17 @@ class Digimon extends Model
     ];
 
     public function getDigimons() {
-        $filtro = '';
-        return DB::select('select * from digimon where music != ?', [$filtro]);
+        // $filtro = '';
+        return DB::select("
+            SELECT
+            d.id,
+            d.name,
+            d.level,
+            d.img,
+            d.id_music,
+            CONCAT(m.name, '.mp3') AS music
+            FROM digimon d
+            INNER JOIN music m ON m.id = d.id_music    
+        ");
     }
 }
